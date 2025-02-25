@@ -1,6 +1,6 @@
-# **Hier ist das Skript mit der vollständigen Datenstruktur inklusive der fehlenden Variablen**
+# **Definition der anzuwendenden AVR Bedingungen**
 
-# Aktualisierte Tarifstruktur mit den korrekten Entgelten für Regionalkommission West
+# Aktuelle Tarifstruktur mit den korrekten Entgelten für Regionalkommission West
 tarifstruktur = {
     "I": {1: 5288.32, 2: 5588.11, 3: 5802.19, 4: 6173.28, 5: 6615.77, 6: 6797.77},
     "II": {1: 6979.74, 2: 7564.95, 3: 8078.81, 4: 8378.57, 5: 8671.15, 6: 8963.74},
@@ -8,15 +8,32 @@ tarifstruktur = {
     "IV": {1: 10284.04, 2: 11019.20},
 }
 
-# Korrekte Zeitzuschläge in Prozent des Stundenlohns
+# Korrekte Zeitzuschläge in Prozent des Stundenlohns des auf eine Stunde anfallenden Anteils des Tabellenentgelts der Stufe 3 der jeweiligen Entgeltgruppe
 zuschläge = {
     "nacht": 0.15,  # 15% für Nachtarbeit
     "sonntag": 0.25,  # 25% für Sonntagsarbeit
-    "feiertag": 0.35,  # 35% für Feiertagsarbeit
+    "feiertag_mit_fza": 0.35,  # 35% für Feiertagsarbeit mit FZA
+    "feiertag_ohne_fza": 1.35 # 135% für Feiertagsarbeit ohne FZA
 }
 
 # Bereitschaftsdienstzeiten in Stunden (Stufe III - vollständig vergütet)
 bd_zeiten = {
+    "werktag": 20.5,
+    "freitag": 21.75,
+    "samstag": 24,
+    "sonntag": 22.75,
+}
+
+# Bereitschaftsdienstzeiten in Stunden (Stufe III - vollständig vergütet)
+bd_zeit_bereitschaft = {
+    "werktag": 20.5,
+    "freitag": 21.75,
+    "samstag": 24,
+    "sonntag": 22.75,
+}
+
+# Zeiten der Regelarbeitszeit bei Ableistung von BD an bestimmtem Tag
+bd_zeit_regelarbeit = {
     "werktag": 20.5,
     "freitag": 21.75,
     "samstag": 24,
@@ -31,7 +48,7 @@ stundenlohn_bd = {
     "IV": {1: 47.60, 2: 47.60},
 }
 
-# Beispielhafte Benutzereingaben
+# Beispielhafte Benutzereingaben, hier interaktive Abfrage implementieren
 eingaben = {
     "tarifgruppe": "II",
     "stufe": 3,
